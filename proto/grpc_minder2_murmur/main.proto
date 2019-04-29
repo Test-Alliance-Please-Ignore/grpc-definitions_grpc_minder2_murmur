@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package grpc_minder2_murmur;
+
+import "grpc_minder2_murmur/murmur.proto";
+import "grpc_minder2_murmur/database.proto";
+
+
+message Void {
+}
+
+
+service MurmurService {
+    rpc Create (grpc_minder2_murmur.murmur.MurmurContainer)
+        returns (Void);
+
+    rpc Destroy (grpc_minder2_murmur.murmur.DestroyRequest)
+        returns (Void);
+
+    rpc GetImage (grpc_minder2_murmur.murmur.MurmurContainer)
+        returns (grpc_minder2_murmur.murmur.MurmurContainer);
+}
+
+
+service DatabaseService {
+    rpc Create (grpc_minder2_murmur.database.DatabaseContainer)
+        returns (Void);
+
+    rpc Destroy (grpc_minder2_murmur.database.DestroyRequest)
+        returns (Void);
+}

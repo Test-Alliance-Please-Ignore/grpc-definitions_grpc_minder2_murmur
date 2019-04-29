@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package grpc_minder2_murmur.database;
+
+import "grpc_minder2_murmur/docker.proto";
+
+message DatabaseContainer {
+    string server_id = 1;
+
+    string image = 2;
+    string network = 3;
+
+    repeated grpc_minder2_murmur.docker.PortMap ports = 4;
+}
+
+message DestroyRequest {
+    DatabaseContainer container = 1;
+
+    bool volumes = 2;
+    bool force = 3;
+}
